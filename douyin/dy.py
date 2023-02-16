@@ -100,7 +100,7 @@ def unPackWebcastChatMessage(data):
     chatMessage = ChatMessage()
     chatMessage.ParseFromString(data)
     data = json_format.MessageToDict(chatMessage, preserving_proto_field_name=True)
-    logging.info('[unPackWebcastChatMessage] [📧直播间弹幕消息] [房间Id：' + liveRoomId + '] ｜ ' + data['content'])
+    log = json.dumps(data, ensure_ascii=False)
     logging.info('[unPackWebcastChatMessage] [📧直播间弹幕消息] [房间Id：' + liveRoomId + '] ｜ ' + log)
     q.put(json.dumps(data))
     return data
